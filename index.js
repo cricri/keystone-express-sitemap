@@ -162,7 +162,7 @@ var KeystoneSitemap = function(keystone, req, res) {
   var createXmlFile = function() {
     sitemap({
       map, route,
-      url: req.hostname,
+      url: req.get('x-forwarded-host') || req.hostname,
       http: req.get('x-forwarded-proto') || req.protocol
     }).XMLtoWeb(res);
   };
